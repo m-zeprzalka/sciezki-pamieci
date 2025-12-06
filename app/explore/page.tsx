@@ -34,7 +34,7 @@ export default function ExplorePage() {
   return (
     <div className="relative">
       <ExplorationHeader onShowLeaderboard={() => setShowLeaderboard(true)} />
-      <div className="pt-[88px]">
+      <div>
         <ExplorationMap />
       </div>
       <LeaderboardModal

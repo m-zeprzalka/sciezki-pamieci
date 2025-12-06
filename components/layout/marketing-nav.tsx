@@ -23,7 +23,7 @@ export function MarketingNav() {
         <div className="flex items-center gap-3">
           <Button asChild className="group w-full sm:w-auto">
             <Link href="/explore">
-              Rozpocznij Podróż
+              Rozpocznij
               <ArrowRight className="transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>

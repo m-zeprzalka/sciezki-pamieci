@@ -28,20 +28,13 @@ export function AppSidebar() {
     <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-64 border-r bg-card">
       <div className="flex flex-col h-full w-full">
         {/* Logo */}
-        <div className="p-6">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-all"
-              style={{ backgroundColor: "hsl(0, 100%, 45%)" }}
-            >
-              <span className="font-bold text-lg" style={{ color: "white" }}>
-                {CONTENT.project.name.charAt(1) || "H"}
-              </span>
-            </div>
-            <span className="font-bold text-lg">{CONTENT.project.name}</span>
-          </Link>
-        </div>
-
+        <Link href="/" className="flex items-center gap-2 group">
+          <img
+            src="/logo.png"
+            alt={CONTENT.project.name}
+            className="h-14 object-contain"
+          />
+        </Link>
         <Separator />
 
         {/* Navigation */}

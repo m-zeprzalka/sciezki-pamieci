@@ -32,33 +32,80 @@ export function ExplorationMap() {
   // Get user's geolocation
   useEffect(() => {
     if (!navigator.geolocation) {
+      const BYDGOSZCZ_CENTER = { lat: 53.1235, lng: 18.0084 }
       setLocationError(
         "Geolokalizacja nie jest wspierana przez Twoją przeglądarkę"
       )
       // Fallback to Bydgoszcz center
-      setUserLocation({ lat: 53.1235, lng: 18.0084 })
+      setUserLocation(BYDGOSZCZ_CENTER)
       return
     }
 
     let watchId: number | null = null
 
+    // Bydgoszcz center coordinates
+    const BYDGOSZCZ_CENTER = { lat: 53.1235, lng: 18.0084 }
+    const MAX_DISTANCE_KM = 50 // 50km radius from Bydgoszcz
+
+    // Helper function to calculate distance between two points (Haversine formula)
+    const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+      const R = 6371 // Earth's radius in km
+      const dLat = (lat2 - lat1) * Math.PI / 180
+      const dLng = (lng2 - lng1) * Math.PI / 180
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2)
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+      return R * c
+    }
+
     // First try to get current position (this triggers the permission prompt)
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // Success! Set initial location
-        setUserLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        })
-        setLocationError(null)
+        const userLat = position.coords.latitude
+        const userLng = position.coords.longitude
+        const distanceFromBydgoszcz = calculateDistance(
+          userLat,
+          userLng,
+          BYDGOSZCZ_CENTER.lat,
+          BYDGOSZCZ_CENTER.lng
+        )
+
+        // Check if user is within 50km of Bydgoszcz
+        if (distanceFromBydgoszcz <= MAX_DISTANCE_KM) {
+          // User is in Bydgoszcz area - use real location
+          setUserLocation({ lat: userLat, lng: userLng })
+          setLocationError(null)
+        } else {
+          // User is too far from Bydgoszcz - force Bydgoszcz center
+          console.log(`User is ${distanceFromBydgoszcz.toFixed(1)}km from Bydgoszcz - using center`)
+          setUserLocation(BYDGOSZCZ_CENTER)
+          setLocationError(
+            `Jesteś za daleko od Bydgoszczy (${distanceFromBydgoszcz.toFixed(0)}km). Pokazujemy centrum miasta.`
+          )
+        }
 
         // Now start watching for position changes
         watchId = navigator.geolocation.watchPosition(
           (position) => {
-            setUserLocation({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            })
+            const lat = position.coords.latitude
+            const lng = position.coords.longitude
+            const distance = calculateDistance(
+              lat,
+              lng,
+              BYDGOSZCZ_CENTER.lat,
+              BYDGOSZCZ_CENTER.lng
+            )
+
+            if (distance <= MAX_DISTANCE_KM) {
+              setUserLocation({ lat, lng })
+              setLocationError(null)
+            } else {
+              setUserLocation(BYDGOSZCZ_CENTER)
+              setLocationError(
+                `Jesteś za daleko od Bydgoszczy (${distance.toFixed(0)}km). Pokazujemy centrum miasta.`
+              )
+            }
           },
           (error) => {
             console.error("Watch position error:", error)
@@ -73,7 +120,7 @@ export function ExplorationMap() {
       (error) => {
         // User denied or error occurred - fallback to Bydgoszcz center
         console.log("Geolocation denied/error - using Bydgoszcz center")
-        setUserLocation({ lat: 53.1235, lng: 18.0084 })
+        setUserLocation(BYDGOSZCZ_CENTER)
 
         if (error.code === 1) {
           // PERMISSION_DENIED

@@ -55,18 +55,11 @@ export function ExplorationHeader({
         <div className="flex items-center justify-between">
           {/* Logo & Title - Clickable to home */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center shadow-md transition-transform group-hover:scale-105"
-              style={{ backgroundColor: "hsl(0, 100%, 45%)" }}
-            >
-              <Map className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-sm sm:text-base font-bold leading-tight">
-                Ścieżki Pamięci
-              </h1>
-              <p className="text-xs text-muted-foreground">Bydgoszcz</p>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Bydgoszcz Logo"
+              className="h-14 object-contain"
+            />
           </Link>
 
           {/* Stats */}
@@ -122,16 +115,6 @@ export function ExplorationHeader({
               </Button>
             )}
           </div>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
-          <div
-            className="h-full bg-primary transition-all duration-500"
-            style={{
-              width: `${(progress.discovered / progress.total) * 100}%`,
-            }}
-          />
         </div>
       </div>
     </div>
