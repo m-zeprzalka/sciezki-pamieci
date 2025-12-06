@@ -25,14 +25,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pl" suppressHydrationWarning>
+    <html lang="pl" suppressHydrationWarning className="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

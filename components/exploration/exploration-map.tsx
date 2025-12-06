@@ -32,7 +32,7 @@ export function ExplorationMap() {
   // Get user's geolocation
   useEffect(() => {
     if (!navigator.geolocation) {
-      const BYDGOSZCZ_CENTER = { lat: 53.1235, lng: 18.0084 }
+      const BYDGOSZCZ_CENTER = { lat: 53.1228, lng: 18.0005 }
       setLocationError(
         "Geolokalizacja nie jest wspierana przez Twoją przeglądarkę"
       )
@@ -43,9 +43,9 @@ export function ExplorationMap() {
 
     let watchId: number | null = null
 
-    // Bydgoszcz center coordinates
-    const BYDGOSZCZ_CENTER = { lat: 53.1235, lng: 18.0084 }
-    const MAX_DISTANCE_KM = 50 // 50km radius from Bydgoszcz
+    // Bydgoszcz center coordinates (Stary Rynek)
+    const BYDGOSZCZ_CENTER = { lat: 53.1228, lng: 18.0005 }
+    const MAX_DISTANCE_KM = 10 // 10km radius from Bydgoszcz
 
     // Helper function to calculate distance between two points (Haversine formula)
     const calculateDistance = (

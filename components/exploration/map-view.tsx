@@ -1,12 +1,22 @@
 "use client"
 
-import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet"
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Circle,
+  useMap,
+} from "react-leaflet"
 import { Icon } from "leaflet"
 import "leaflet/dist/leaflet.css"
 import { HistoricalPoint, PointStatus } from "@/lib/types/historical-point"
 import { useState } from "react"
 import { PointCard } from "./point-card"
 import type { MapViewProps } from "./types"
+import { Button } from "@/components/ui/button"
+import { Navigation, Plus, Minus } from "lucide-react"
+import { BYDGOSZCZ_CENTER } from "@/data/historical-points"
 
 // Custom marker icons
 const createIcon = (status: PointStatus) => {
@@ -47,6 +57,55 @@ const userIcon = new Icon({
   iconAnchor: [12, 12],
 })
 
+// Map controls component
+function MapControls() {
+  const map = useMap()
+
+  const handleRecenter = () => {
+    map.setView([BYDGOSZCZ_CENTER.lat, BYDGOSZCZ_CENTER.lng], 13)
+  }
+
+  const handleZoomIn = () => {
+    map.zoomIn()
+  }
+
+  const handleZoomOut = () => {
+    map.zoomOut()
+  }
+
+  return (
+    <div className="absolute bottom-24 right-4 z-[1000] flex flex-col gap-2">
+      <Button
+        onClick={handleZoomIn}
+        size="icon"
+        className="h-12 w-12 rounded-full shadow-lg"
+        style={{ backgroundColor: "white", color: "#ef4444" }}
+        title="Przybliż"
+      >
+        <Plus className="h-6 w-6" />
+      </Button>
+      <Button
+        onClick={handleZoomOut}
+        size="icon"
+        className="h-12 w-12 rounded-full shadow-lg"
+        style={{ backgroundColor: "white", color: "#ef4444" }}
+        title="Oddal"
+      >
+        <Minus className="h-6 w-6" />
+      </Button>
+      <Button
+        onClick={handleRecenter}
+        size="icon"
+        className="h-12 w-12 rounded-full shadow-lg"
+        style={{ backgroundColor: "#ef4444", color: "white" }}
+        title="Wycentruj mapę na Bydgoszcz"
+      >
+        <Navigation className="h-6 w-6" />
+      </Button>
+    </div>
+  )
+}
+
 function MapView({ userLocation, points, pointStatuses }: MapViewProps) {
   const [selectedPoint, setSelectedPoint] = useState<HistoricalPoint | null>(
     null
@@ -56,14 +115,18 @@ function MapView({ userLocation, points, pointStatuses }: MapViewProps) {
     <>
       <MapContainer
         center={[userLocation.lat, userLocation.lng]}
-        zoom={15}
+        zoom={13}
         className="w-full h-screen z-0"
-        zoomControl={true}
+        zoomControl={false}
+        scrollWheelZoom={true}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        {/* Map controls: zoom and recenter */}
+        <MapControls />
 
         {/* User location with pulsing circle */}
         <Circle
