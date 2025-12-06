@@ -21,8 +21,8 @@ export function CompletionEasterEgg() {
     const interval = setInterval(() => {
       const progress = getUserProgress()
 
-      // Easter egg: All 8 places discovered!
-      if (progress.discoveredPlaces.length === 8 && !hasShown && !showModal) {
+      // Easter egg: All 15 places discovered!
+      if (progress.discoveredPlaces.length === 15 && !hasShown && !showModal) {
         setShowModal(true)
         setHasShown(true)
 
@@ -40,7 +40,7 @@ export function CompletionEasterEgg() {
     // Listen for storage changes (from other tabs)
     const handleStorageChange = () => {
       const progress = getUserProgress()
-      if (progress.discoveredPlaces.length === 8 && !hasShown && !showModal) {
+      if (progress.discoveredPlaces.length === 15 && !hasShown && !showModal) {
         setShowModal(true)
         setHasShown(true)
         playCompletionSound()
@@ -66,27 +66,30 @@ export function CompletionEasterEgg() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] bg-black/70 flex items-center justify-center p-4"
           onClick={() => setShowModal(false)}
         >
           <motion.div
-            initial={{ scale: 0.8, y: 50, opacity: 0 }}
-            animate={{ scale: 1, y: 0, opacity: 1 }}
-            exit={{ scale: 0.8, y: 50, opacity: 0 }}
-            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            initial={{ y: 50, opacity: 0, scale: 0.95 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 50, opacity: 0, scale: 0.95 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl"
             style={{ backgroundColor: "hsl(var(--background))" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header with gradient */}
-            <div className="relative p-8 text-center bg-gradient-to-br from-primary/20 via-primary/10 to-background border-b">
+            {/* Header */}
+            <div
+              className="p-6 border-b text-center"
+              style={{ backgroundColor: "hsl(var(--muted))" }}
+            >
               <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", damping: 15 }}
-                className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg"
+                className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg"
               >
-                <Trophy className="w-12 h-12 text-white" />
+                <Trophy className="w-10 h-10 text-white" />
               </motion.div>
 
               <motion.div
@@ -95,7 +98,7 @@ export function CompletionEasterEgg() {
                 transition={{ delay: 0.4 }}
               >
                 <h2 className="text-3xl font-bold mb-2">🎉 Gratulacje! 🎉</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   Odkryłeś wszystkie miejsca!
                 </p>
               </motion.div>
@@ -138,7 +141,7 @@ export function CompletionEasterEgg() {
                   <p className="text-sm text-muted-foreground">Punktów</p>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-primary/5 border border-primary/20">
-                  <p className="text-3xl font-bold text-primary mb-1">8/8</p>
+                  <p className="text-3xl font-bold text-primary mb-1">15/15</p>
                   <p className="text-sm text-muted-foreground">Miejsc</p>
                 </div>
               </div>
@@ -164,7 +167,7 @@ export function CompletionEasterEgg() {
               {/* Message */}
               <div className="text-center space-y-2">
                 <p className="text-foreground leading-relaxed">
-                  Poznałeś wszystkie 8 miejsc historycznych Bydgoszczy! Jesteś
+                  Poznałeś wszystkie 15 miejsc historycznych Bydgoszczy! Jesteś
                   prawdziwym eksplorerem miasta. 🗺️
                 </p>
                 <p className="text-sm text-muted-foreground">
@@ -179,7 +182,7 @@ export function CompletionEasterEgg() {
                     shareResults(
                       progress.points,
                       progress.discoveredPlaces.length,
-                      8
+                      15
                     )
                   }}
                   variant="outline"

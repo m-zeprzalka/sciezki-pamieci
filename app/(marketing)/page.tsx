@@ -28,8 +28,8 @@ export default function Home() {
       {/* Hero Section */}
       <Hero
         title="Bydgoszcz – Ścieżki Pamięci 2.0"
-        subtitle="Odkryj Bydgoszcz - Gamifikowana turystyka w Twojej kieszeni"
-        description="Odkrywaj historie ukryte w pomnikach, rzeźbach i miejscach pamięci. Graj, ucz się i zbieraj punkty eksplorując Bydgoszcz jak nigdy dotąd."
+        subtitle="Zagraj w naszą miejską grę edukacyjną i odkryj historię Bydgoszczy na nowo!"
+        description="Zrób zdjęcia wszystkich ważnych miesjc w Bydgoszczy, odpowiadaj na pytania i zdobywaj punkty w rankingu eksplorerów. Poznaj sekrety miasta poprzez interaktywną mapę i quizy."
         ctaPrimary="Rozpocznij eksplorację"
         ctaSecondary="Zobacz jak to działa"
       />
@@ -38,21 +38,21 @@ export default function Home() {
       <ProblemCards
         problems={[
           {
-            title: "Niewidoczna Historia",
+            title: "Zachęcenie do Przyjazdu",
             description:
-              "Codziennie mijamy pomniki i miejsca pamięci, ale nie znamy ich historii. Bydgoszcz jest pełna ukrytych sekretów.",
+              "W Bydgoszczy zakochałem się od pierwszego wejrzania, ale gdyby nie HackNation 2025 nigdy bym tu nie przyjechał. Musimy jakoś zachęcić turystów, aby przybyli tu pierwszy raz, na pewno będą chcieli wrócić",
             icon: Target,
           },
           {
-            title: "Nudna Turystyka",
+            title: "Bark Motywacji",
             description:
-              "Tradycyjne zwiedzanie to przewodnik i tablice informacyjne. Młode pokolenie potrzebuje czegoś więcej - interakcji, zaangażowania, gamifikacji.",
+              "Tradycyjne zwiedzanie to przewodnik i tablice informacyjne. Młode pokolenie potrzebuje czegoś więcej - interakcji, zaangażowania, gamifikacji.Ludzie nie mają powodu by aktywnie poznawać miasto. Brakuje elementu rywalizacji, nagród i społecznościowego aspektu odkrywania.",
             icon: Brain,
           },
           {
-            title: "Brak Motywacji",
+            title: "Zbyt Duża Ilość Miejsc",
             description:
-              "Ludzie nie mają powodu by aktywnie poznawać miasto. Brakuje elementu rywalizacji, nagród i społecznościowego aspektu odkrywania.",
+              "Często ludzie przyjeżdżają gdzieś na weekend i chcą zobaczyć najważniejsze atrakcje. W Bydgoszczy jest ich tak dużo, że trudno zdecydować co wybrać. Potrzebujemy prostego sposobu na odkrywanie najciekawszych miejsc bez przytłoczenia nadmiarem informacji. Tyle miejsc ile rzeczywiście można zwiedzić w trakcie weekendu",
             icon: TrendingUp,
           },
         ]}
@@ -71,29 +71,29 @@ export default function Home() {
           {
             title: "Interaktywne Karty",
             description:
-              "Każde miejsce to bogata karta z opisem historycznym, zdjęciami, datami i kategoriami. Poznaj historie najciekawszych miejsc.",
+              "Każde miejsce to bogata karta z opisem historycznym, zdjęciem do zrobienia, datami i kategoriami. Poznaj historie najciekawszych miejsc.",
             icon: Sparkles,
             span: "md:col-span-1",
           },
           {
             title: "System Quizów",
             description:
-              "3 pytania do każdego miejsca. 100 pkt za 3/3, 50 pkt za 2/3, 25 pkt za 1/3. Ucz się przez zabawę!",
+              "3 kluczowe pytania o każdym miejscu. Zdobywaj punkty za poprawne odpowiedzi i ucz się poprzez zabawę.",
             icon: Brain,
             span: "md:col-span-1",
           },
           {
             title: "Ranking & Rywalizacja",
             description:
-              "TOP 10 eksplorerów. Zobacz swoją pozycję i rywalizuj z innymi o miejsce na podium. Udostępniaj swój wynik innym (Social Games)!",
+              "TOP 10 eksplorerów. Zobacz swoją pozycję i rywalizuj z innymi o miejsce na podium. Udostępniaj swój wynik i galerię zdjęć innym (Social Games)!",
             icon: Trophy,
             span: "md:col-span-2",
           },
           {
-            title: "PWA Ready",
+            title: "Galeria Zdjęć do Udostępnienia",
             description:
-              "Pełna responsywność, dark mode, offline capability. Zainstaluj jak natywną aplikację!",
-            icon: Smartphone,
+              "Każdy z uczestników wyzwania musi stworzyć własną galerię zdjęć zrobionych podczas zwiedzania Bydgoszczy. Następnie całą galerię można udostępnić jako mozaikę zdjęć w social mediach!",
+            icon: Camera,
             span: "md:col-span-1",
           },
         ]}
@@ -141,7 +141,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Otwórz Mapę</h3>
               <p className="text-muted-foreground">
-                Uruchom aplikację i zobacz interaktywną mapę Bydgoszczy z 8
+                Uruchom aplikację i zobacz interaktywną mapę Bydgoszczy z 15
                 punktami historycznymi. Czerwone markery czekają na odkrycie!
               </p>
             </div>
@@ -233,7 +233,8 @@ export default function Home() {
               <p className="text-muted-foreground">
                 Za pomocą wbudowanej funkcji, rób zdjęcia i nagrywaj filmy swoim
                 aparatem. Na koniec stwórz własną mozaikę ze zdjęć, którą mozesz
-                wyeksportować do pliku graficznego
+                wyeksportować do pliku graficznego i udostępnić w social
+                mediach!
               </p>
             </div>
           </div>
@@ -244,9 +245,9 @@ export default function Home() {
       <ImpactMetrics
         metrics={[
           {
-            value: "8+",
+            value: "15+",
             label: "Miejsc historycznych do odkrycia",
-            trend: "↗ +24 pytań",
+            trend: "↗ +45 pytań",
           },
           {
             value: "100%",
@@ -340,7 +341,7 @@ export default function Home() {
                 <div className="text-center space-y-4">
                   <div className="text-6xl">🗺️</div>
                   <div className="space-y-2">
-                    <p className="text-5xl font-bold text-primary">8</p>
+                    <p className="text-5xl font-bold text-primary">15</p>
                     <p className="text-sm text-muted-foreground px-8">
                       Miejsc historycznych z pełnym opisem i quizami
                     </p>
@@ -365,7 +366,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                8 miejsc, 24 pytania, nieskończone możliwości. Każde miejsce ma
+                15 miejsc, 45 pytań, nieskończone możliwości. Każde miejsce ma
                 swoją historię - odkryj je wszystkie!
               </p>
             </div>

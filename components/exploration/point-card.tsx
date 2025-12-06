@@ -255,15 +255,15 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed top-0 inset-0 z-50 bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4"
+        className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-2 sm:p-4"
         onClick={onClose}
       >
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          initial={{ y: 50, opacity: 0, scale: 0.95 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 50, opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="w-full sm:max-w-2xl max-h-[90vh]  overflow-hidden shadow-2xl"
+          className="w-full max-w-3xl max-h-[95vh] rounded-2xl overflow-hidden shadow-2xl"
           style={{
             backgroundColor: "hsl(var(--background))",
           }}
@@ -271,11 +271,11 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
         >
           {/* Header */}
           <div
-            className="sticky top-0 backdrop-blur-sm border-b p-4 flex items-center justify-between z-10"
-            style={{ backgroundColor: "hsl(var(--background) / 0.95)" }}
+            className="p-6 border-b flex items-center justify-between"
+            style={{ backgroundColor: "hsl(var(--muted))" }}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
                 {point.category === "pomnik"
                   ? "🗿"
                   : point.category === "rzeźba"
@@ -283,26 +283,34 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
                   : point.category === "budynek"
                   ? "🏛️"
                   : "📍"}
-              </span>
+              </div>
               <div>
-                <h2 className="text-lg font-bold">{point.name}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold line-clamp-2">
+                  {point.name}
+                </h2>
                 {point.year && (
-                  <p className="text-xs text-muted-foreground">{point.year}</p>
+                  <p className="text-sm text-muted-foreground">{point.year}</p>
                 )}
               </div>
             </div>
             <Button variant="ghost" size="icon" onClick={onClose}>
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </Button>
           </div>
 
           {/* Content */}
-          <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div className="overflow-y-auto max-h-[calc(95vh-100px)]">
             {!showQuiz ? (
               // Discovery phase
-              <div className="p-6 space-y-6">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                 {/* Image / Photo Section */}
-                <div className="aspect-video w-full bg-muted rounded-lg overflow-hidden relative group">
+                <div
+                  className={`aspect-video w-full rounded-lg overflow-hidden relative ${
+                    userPhoto
+                      ? "bg-muted"
+                      : "bg-muted border-2 border-dashed border-muted-foreground/30"
+                  }`}
+                >
                   {userPhoto ? (
                     // User's photo
                     <img
@@ -311,25 +319,23 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    // Placeholder with emoji
-                    <div className="w-full h-full flex items-center justify-center text-6xl">
-                      {point.category === "pomnik"
-                        ? "🗿"
-                        : point.category === "rzeźba"
-                        ? "🎨"
-                        : point.category === "budynek"
-                        ? "🏛️"
-                        : "📍"}
-                    </div>
+                    // Empty placeholder
+                    <div className="w-full h-full"></div>
                   )}
 
-                  {/* Photo Upload Button - Always visible */}
-                  <div className="absolute bottom-4 margin-auto">
+                  {/* Photo Upload Button */}
+                  <div
+                    className={
+                      userPhoto
+                        ? "absolute bottom-3 right-3"
+                        : "absolute inset-0 flex items-center justify-center"
+                    }
+                  >
                     <Button
                       onClick={triggerPhotoUpload}
                       disabled={isUploadingPhoto}
                       className="shadow-lg"
-                      size="sm"
+                      size={userPhoto ? "sm" : "lg"}
                     >
                       {isUploadingPhoto ? (
                         <>
@@ -339,7 +345,7 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
                       ) : userPhoto ? (
                         <>
                           <ImageIcon className="w-4 h-4 mr-2" />
-                          Zmień zdjęcie
+                          Zmień
                         </>
                       ) : (
                         <>
@@ -363,12 +369,12 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
 
                 {/* Description */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="px-2 py-1 bg-primary/10 rounded-full text-primary font-medium">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="px-3 py-1 border border-primary/30 rounded-full text-primary font-medium bg-primary/5">
                       {point.category.replace("_", " ")}
                     </span>
                     {point.historicalPeriod && (
-                      <span className="px-2 py-1 bg-muted rounded-full">
+                      <span className="px-3 py-1 border border-border rounded-full text-muted-foreground">
                         {point.historicalPeriod}
                       </span>
                     )}
@@ -400,7 +406,7 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
               </div>
             ) : quizComplete ? (
               // Results phase
-              <div className="p-6 space-y-6 text-center">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 text-center pb-6">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -460,31 +466,31 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
                 </div>
 
                 {/* Share Button */}
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3">
                   <Button
                     onClick={() => {
                       const progress = getUserProgress()
                       shareResults(
                         progress.points,
                         progress.discoveredPlaces.length,
-                        8
+                        15
                       )
                     }}
                     variant="outline"
-                    className="flex-1"
+                    className="w-full"
                     size="lg"
                   >
                     <Share2 className="w-5 h-5 mr-2" />
                     Udostępnij
                   </Button>
-                  <Button onClick={onClose} className="flex-1" size="lg">
+                  <Button onClick={onClose} className="w-full" size="lg">
                     Powrót do mapy
                   </Button>
                 </div>
               </div>
             ) : (
               // Quiz phase
-              <div className="p-6 space-y-6">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                 {/* Progress */}
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span>

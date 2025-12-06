@@ -16,16 +16,16 @@ interface LeaderboardEntry {
 
 // Mock data - TOP 10
 const mockLeaderboard: LeaderboardEntry[] = [
-  { rank: 1, name: "Anna K.", points: 800, discovered: 8, avatar: "👑" },
-  { rank: 2, name: "Marek W.", points: 750, discovered: 8, avatar: "🥈" },
-  { rank: 3, name: "Zofia P.", points: 700, discovered: 7, avatar: "🥉" },
-  { rank: 4, name: "Piotr D.", points: 650, discovered: 7, avatar: "🎯" },
-  { rank: 5, name: "Kasia M.", points: 600, discovered: 6, avatar: "🎨" },
-  { rank: 6, name: "Jakub S.", points: 550, discovered: 6, avatar: "🚀" },
-  { rank: 7, name: "Ola T.", points: 500, discovered: 5, avatar: "✨" },
-  { rank: 8, name: "Michał R.", points: 450, discovered: 5, avatar: "🌟" },
-  { rank: 9, name: "Ewa L.", points: 400, discovered: 4, avatar: "💎" },
-  { rank: 10, name: "Adam B.", points: 350, discovered: 4, avatar: "🔥" },
+  { rank: 1, name: "Anna K.", points: 1500, discovered: 15, avatar: "👑" },
+  { rank: 2, name: "Marek W.", points: 1425, discovered: 15, avatar: "🥈" },
+  { rank: 3, name: "Zofia P.", points: 1350, discovered: 15, avatar: "🥉" },
+  { rank: 4, name: "Piotr D.", points: 1275, discovered: 15, avatar: "🎯" },
+  { rank: 5, name: "Kasia M.", points: 1200, discovered: 15, avatar: "🎨" },
+  { rank: 6, name: "Jakub S.", points: 1125, discovered: 15, avatar: "🚀" },
+  { rank: 7, name: "Ola T.", points: 1050, discovered: 15, avatar: "✨" },
+  { rank: 8, name: "Michał R.", points: 975, discovered: 15, avatar: "🌟" },
+  { rank: 9, name: "Ewa L.", points: 900, discovered: 15, avatar: "💎" },
+  { rank: 10, name: "Adam B.", points: 825, discovered: 15, avatar: "🔥" },
 ]
 
 interface LeaderboardModalProps {
@@ -156,7 +156,7 @@ export function LeaderboardModal({
                       <div>
                         <p className="font-semibold">{entry.name}</p>
                         <p className="text-xs text-muted-foreground">
-                          {entry.discovered}/8 miejsc
+                          {entry.discovered}/15 miejsc
                         </p>
                       </div>
                     </div>
@@ -177,7 +177,7 @@ export function LeaderboardModal({
           {/* Footer */}
           <div className="p-4 border-t space-y-3">
             <Button
-              onClick={() => shareResults(userPoints, userDiscovered, 8)}
+              onClick={() => shareResults(userPoints, userDiscovered, 15)}
               variant="outline"
               className="w-full"
               size="lg"

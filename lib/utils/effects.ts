@@ -35,7 +35,7 @@ export function playSuccessSound() {
 }
 
 /**
- * Play completion sound (all 8 places discovered)
+ * Play completion sound (all 15 places discovered)
  */
 export function playCompletionSound() {
   if (typeof window === "undefined") return

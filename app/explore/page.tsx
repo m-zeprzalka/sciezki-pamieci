@@ -43,7 +43,7 @@ export default function ExplorePage() {
         userPoints={userPoints}
         userDiscovered={userDiscovered}
       />
-      {/* Easter Egg: Celebration when all 8 places discovered! */}
+      {/* Easter Egg: Celebration when all 15 places discovered! */}
       <CompletionEasterEgg />
     </div>
   )
