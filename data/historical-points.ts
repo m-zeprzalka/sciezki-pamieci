@@ -1,325 +1,623 @@
-import { HistoricalPoint } from "@/lib/types/historical-point"
+// PLIK: data/historical-points.ts
 
-export const BYDGOSZCZ_CENTER = {
-  lat: 53.1235,
-  lng: 18.0084,
+// --- 1. DEFINICJE TYPÓW (Wewnątrz pliku dla bezpieczeństwa) ---
+export type PointCategory =
+  | "budynek"
+  | "pomnik"
+  | "rzeźba"
+  | "miejsce_pamieci"
+  | "muzeum"
+  | "sacrum"
+  | "miejsce"
+  | "atrakcja"
+  | "dzielnica"
+  | "park"
+  | "technika"
+  | string
+
+export interface QuizQuestion {
+  question: string
+  options: string[]
+  correctIndex: number
 }
 
-export const PROXIMITY_RADIUS = 50 // meters
+export interface HistoricalPoint {
+  id: string
+  name: string
+  lat: number
+  lng: number
+  category: PointCategory
+  image: string
+  description: string
+  year: string
+  historicalPeriod: string
+  quiz: QuizQuestion[]
+}
 
+// --- 2. KONFIGURACJA MAPY ---
+// Środek mapy ustawiony na Stary Rynek/Mostową
+export const BYDGOSZCZ_CENTER = {
+  lat: 53.1228,
+  lng: 18.0005,
+}
+
+// Promień zaliczenia punktu (40m jest bezpieczne dla GPS w telefonach)
+export const PROXIMITY_RADIUS = 40
+
+// --- 3. BAZA DANYCH: TOP 15 MIEJSC ---
 export const historicalPoints: HistoricalPoint[] = [
   {
     id: "1",
-    name: "Pomnik Walki i Męczeństwa",
-    lat: 53.12347894512817,
-    lng: 18.00847280025482,
-    category: "pomnik",
-    image: "/images/pomnik-walki.jpg",
+    name: "Przechodzący przez Rzekę",
+    // Punkt zawieszony nad wodą, blisko mostu
+    lat: 53.12334,
+    lng: 18.00161,
+    category: "rzeźba",
+    image: "/images/przechodzacy.jpg",
     description:
-      "Pomnik Walki i Męczeństwa na Starym Rynku upamiętnia ofiary II wojny światowej. Wzniesiony w 1960 roku, symbolizuje heroizm mieszkańców Bydgoszczy w walce z okupantem niemieckim. Monument ten jest jednym z najważniejszych miejsc pamięci w mieście, miejscem licznych uroczystości patriotycznych. Jego surowa forma architektoniczna oddaje powagę tematyki.",
-    year: "1960",
-    historicalPeriod: "II wojna światowa",
+      "Ikona Bydgoszczy. Rzeźba linoskoczka balansującego na linie nad rzeką Brdą. Została odsłonięta 1 maja 2004 roku, w dniu wejścia Polski do Unii Europejskiej. Środek ciężkości figury jest położony poniżej liny, dzięki czemu rzeźba utrzymuje równowagę w każdych warunkach pogodowych.",
+    year: "2004",
+    historicalPeriod: "Współczesność",
     quiz: [
       {
-        question: "W którym roku wzniesiono Pomnik Walki i Męczeństwa?",
-        options: ["1945", "1960", "1970", "1980"],
+        question: "Co symbolizuje ta rzeźba?",
+        options: [
+          "Wejście Polski do UE",
+          "Historię cyrku",
+          "Walkę z powodzią",
+          "Zawody pływackie",
+        ],
+        correctIndex: 0,
+      },
+      {
+        question: "Gdzie znajduje się środek ciężkości rzeźby?",
+        options: [
+          "W głowie",
+          "Poniżej liny (w nogach)",
+          "W rękach",
+          "W tyczce",
+        ],
         correctIndex: 1,
       },
       {
-        question: "Co upamiętnia ten pomnik?",
-        options: [
-          "Ofiary I wojny światowej",
-          "Powstanie Warszawskie",
-          "Ofiary II wojny światowej",
-          "Powstanie Wielkopolskie",
-        ],
-        correctIndex: 2,
-      },
-      {
-        question: "Gdzie znajduje się pomnik?",
-        options: [
-          "Na Wyspie Młyńskiej",
-          "Na Starym Rynku",
-          "Przy Operze Nova",
-          "Nad Brdą",
-        ],
+        question: "Nad jaką rzeką wisi rzeźba?",
+        options: ["Wisłą", "Brdą", "Notecią", "Odrą"],
         correctIndex: 1,
       },
     ],
   },
   {
     id: "2",
-    name: "Przechodzący przez Rzekę",
-    lat: 53.12154746055603,
-    lng: 18.003195524215698,
-    category: "rzeźba",
-    image: "/images/przechodzacy.jpg",
+    name: "Spichrze nad Brdą",
+    // Główne wejście do Muzeum przy ul. Grodzkiej 7-11
+    lat: 53.12293301377799,
+    lng: 18.00158783973981,
+
+    category: "budynek",
+    image: "/images/spichrze.jpg",
     description:
-      "Słynna rzeźba na Wyspie Młyńskiej przedstawia postać mężczyzny przechodzącego przez Brdę. Stworzona przez Jerzego Kędziorę w 2004 roku, balansuje na linie napiętej nad rzeką. To jeden z najbardziej rozpoznawalnych symboli Bydgoszczy. Rzeźba zmienia pozycję pod wpływem wiatru, tworząc unikalne widowisko. Jest to miejsce często odwiedzane przez turystów z całego świata.",
-    year: "2004",
-    historicalPeriod: "Współczesność",
+      "Najbardziej rozpoznawalny symbol miasta, widoczny w logo Bydgoszczy. Z dawnego zespołu pięciu szachulcowych spichlerzy zbożowych, do dziś przetrwały trzy. Powstały na przełomie XVIII i XIX wieku. Obecnie są siedzibą Muzeum Okręgowego.",
+    year: "1793-1800",
+    historicalPeriod: "Prusy Południowe",
     quiz: [
       {
-        question: "Kto stworzył rzeźbę Przechodzący przez Rzekę?",
-        options: [
-          "Igor Mitoraj",
-          "Jerzy Kędziora",
-          "Magdalena Abakanowicz",
-          "Xawery Dunikowski",
-        ],
+        question:
+          "Ile spichlerzy z oryginalnego zespołu zachowało się do dziś?",
+        options: ["Dwa", "Trzy", "Pięć", "Jeden"],
         correctIndex: 1,
       },
       {
-        question: "Co jest wyjątkowego w tej rzeźbie?",
-        options: [
-          "Jest wykonana z brązu",
-          "Balansuje na linie nad rzeką",
-          "Jest najwyższą rzeźbą w Polsce",
-          "Świeci w nocy",
-        ],
+        question: "Co znajduje się w logo Bydgoszczy?",
+        options: ["Łuczniczka", "Spichrze", "Opera Nova", "Ratusz"],
         correctIndex: 1,
       },
       {
-        question: "Gdzie znajduje się rzeźba?",
-        options: [
-          "Na Starym Rynku",
-          "Przy Operze Nova",
-          "Na Wyspie Młyńskiej",
-          "W parku miejskim",
-        ],
-        correctIndex: 2,
+        question: "Co pierwotnie przechowywano w budynkach?",
+        options: ["Broń", "Zboże", "Sól", "Tkaniny"],
+        correctIndex: 1,
       },
     ],
   },
   {
     id: "3",
-    name: "Opera Nova",
-    lat: 53.11975419521332,
-    lng: 18.00142288208008,
+    name: "Młyny Rothera",
+    // TWOJE WSPÓŁRZĘDNE (Taras/Woda)
+    lat: 53.122945,
+    lng: 17.994954,
     category: "budynek",
-    image: "/images/opera-nova.jpg",
+    image: "/images/mlyny-rothera.jpg",
     description:
-      "Opera Nova to futurystyczny gmach otwarty w 2006 roku nad brzegiem Brdy. Zaprojektowana przez José Marię García-Paredes, wyróżnia się nowoczesną architekturą przypominającą szklane skrzynie. Opera mieści największą scenę operową w Polsce. Jej fasada nocą świeci kolorami, tworząc spektakularny widok. To nie tylko miejsce kultury, ale też symbol nowoczesnej Bydgoszczy.",
-    year: "2006",
-    historicalPeriod: "XXI wiek",
+      "Potężny kompleks przemysłowy na Wyspie Młyńskiej z połowy XIX wieku. Składa się z młyna i dwóch spichlerzy. Po spektakularnej rewitalizacji zakończonej w 2021 roku, stał się nowoczesnym centrum nauki i kultury z tarasami widokowymi.",
+    year: "1849",
+    historicalPeriod: "XIX wiek",
     quiz: [
       {
-        question: "W którym roku otwarto Operę Nova?",
-        options: ["2000", "2004", "2006", "2010"],
-        correctIndex: 2,
-      },
-      {
-        question: "Kto zaprojektował Operę Nova?",
+        question: "Na jakiej wyspie znajdują się Młyny?",
         options: [
-          "Norman Foster",
-          "José María García-Paredes",
-          "Zaha Hadid",
-          "Daniel Libeskind",
+          "Wyspie Sobieszewskiej",
+          "Wyspie Młyńskiej",
+          "Wyspie Wielkanocnej",
+          "Wyspie Daliowej",
         ],
         correctIndex: 1,
       },
       {
-        question: "Nad brzegiem jakiej rzeki stoi Opera?",
-        options: ["Wisły", "Odry", "Brdy", "Warty"],
-        correctIndex: 2,
-      },
-    ],
-  },
-  {
-    id: "4",
-    name: "Most Uniwersytecki",
-    lat: 53.12294459342957,
-    lng: 18.005725145339966,
-    category: "budynek",
-    image: "/images/most-uniwersytecki.jpg",
-    description:
-      "Most Uniwersytecki to zabytkowy most zwodzony nad Brdą, łączący Wyspę Młyńską ze Starym Miastem. Zbudowany w 1914 roku, zachował mechanizm zwodzenia mostu dla przepływu statków. To jeden z nielicznych zachowanych mostów zwodzonych w Polsce. Most jest świadkiem ponad stulecia historii miasta. Obecnie służy również jako punkt widokowy na panoramę Brdy.",
-    year: "1914",
-    historicalPeriod: "Przełom XIX/XX wieku",
-    quiz: [
-      {
-        question: "Kiedy zbudowano Most Uniwersytecki?",
-        options: ["1890", "1914", "1925", "1945"],
-        correctIndex: 1,
-      },
-      {
-        question: "Co jest charakterystyczne dla tego mostu?",
-        options: [
-          "Ma wieże obronne",
-          "Jest najdłuższy w Polsce",
-          "Zachował mechanizm zwodzenia",
-          "Jest wykonany z drewna",
-        ],
+        question: "Kiedy zakończono rewitalizację obiektu?",
+        options: ["1990", "2004", "2021", "2023"],
         correctIndex: 2,
       },
       {
-        question: "Co łączy Most Uniwersytecki?",
+        question: "Jakiemu celowi służyły pierwotnie?",
         options: [
-          "Wyspę Młyńską ze Starym Miastem",
-          "Dwa brzegi Wisły",
-          "Park z miastem",
-          "Operę z centrum",
+          "Produkcji mąki",
+          "Produkcji prądu",
+          "Produkcji broni",
+          "Jako hotel",
         ],
         correctIndex: 0,
       },
     ],
   },
   {
-    id: "5",
-    name: "Europejskie Centrum Pieniądza",
-    lat: 53.12345528602600,
-    lng: 18.00895214080811,
+    id: "4",
+    name: "Opera Nova",
+    // Wejście główne (Rotunda)
+    lat: 53.12458,
+    lng: 17.99723,
     category: "budynek",
-    image: "/images/centrum-pieniadza.jpg",
+    image: "/images/opera-nova.jpg",
     description:
-      "Europejskie Centrum Pieniądza im. Sławomira S. Skrzypka mieści się w dawnym banku na Starym Rynku. To jedyne takie miejsce w Polsce - muzeum poświęcone historii pieniądza od starożytności po współczesność. Posiada bogatą kolekcję monet, banknotów i dokumentów finansowych. Interaktywne wystawy pozwalają poznać fascynujący świat finansów. To obowiązkowy punkt dla pasjonatów numizmatyki i historii gospodarczej.",
-    year: "2011",
+      "Jeden z najnowocześniejszych teatrów muzycznych w Polsce, malowniczo położony w zakolu Brdy. Jego budowa trwała ponad 30 lat, zyskując przydomek 'białego wieloryba'. Dziś jest gospodarzem Bydgoskiego Festiwalu Operowego.",
+    year: "2006",
     historicalPeriod: "XXI wiek",
     quiz: [
       {
-        question: "Czemu poświęcone jest Europejskie Centrum Pieniądza?",
+        question: "Jak nazywano budynek podczas długiej budowy?",
         options: [
-          "Historii bankowości",
-          "Historii pieniądza",
-          "Ekonomii współczesnej",
-          "Giełdzie papierów wartościowych",
+          "Szklana Pułapka",
+          "Biały Wieloryb",
+          "Zamek nad Wodą",
+          "Titanic",
         ],
         correctIndex: 1,
       },
       {
-        question: "Czyim imieniem nazwano centrum?",
+        question: "W jakim kształcie rzeki położona jest Opera?",
         options: [
-          "Leszka Balcerowicza",
-          "Sławomira S. Skrzypka",
-          "Eugeniusza Kwiatkowskiego",
-          "Władysława Grabskiego",
+          "W prostym korycie",
+          "W zakolu (łuku)",
+          "Przy wodospadzie",
+          "Na wyspie",
         ],
         correctIndex: 1,
       },
       {
-        question: "Gdzie mieści się centrum?",
+        question: "Jaki kolor dominuje na elewacji?",
+        options: ["Czerwony", "Biały", "Czarny", "Złoty"],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "5",
+    name: "Pomnik Walki i Męczeństwa",
+    // Płyta Starego Rynku, przed pomnikiem
+    lat: 53.122151511497606,
+    lng: 17.99991417461088,
+
+    category: "pomnik",
+    image: "/images/pomnik-walki.jpg",
+    description:
+      "Monumentalny pomnik na Starym Rynku upamiętniający ofiary II wojny światowej. Stoi w miejscu publicznych egzekucji dokonanych przez nazistów na mieszkańcach Bydgoszczy we wrześniu 1939 roku (tzw. Krwawa Niedziela).",
+    year: "1969",
+    historicalPeriod: "PRL / Pamięć II WŚ",
+    quiz: [
+      {
+        question: "Co wydarzyło się w tym miejscu w 1939 roku?",
         options: [
-          "W nowoczesnym biurowcu",
-          "W dawnym banku na Starym Rynku",
-          "Przy Operze Nova",
-          "Na Wyspie Młyńskiej",
+          "Jarmark świąteczny",
+          "Publiczne egzekucje",
+          "Budowa ratusza",
+          "Defilada wojskowa",
         ],
+        correctIndex: 1,
+      },
+      {
+        question: "Gdzie stoi pomnik?",
+        options: [
+          "Na Starym Rynku",
+          "Przy Dworcu",
+          "W Myślęcinku",
+          "Na moście",
+        ],
+        correctIndex: 0,
+      },
+      {
+        question: "Z jakiego materiału jest wykonana główna bryła?",
+        options: ["Z plastiku", "Z brązu", "Z drewna", "Z betonu"],
         correctIndex: 1,
       },
     ],
   },
   {
     id: "6",
-    name: "Młyny Rothera",
-    lat: 53.12302,
-    lng: 17.995313,
-    category: "budynek",
-    image: "/images/mlyny-rothera.jpg",
+    name: "Katedra Bydgoska",
+    // Wejście główne od ul. Farnej
+    lat: 53.12289483180527,
+    lng: 17.999125858213457,
+
+    category: "sacrum",
+    image: "/images/katedra.jpg",
     description:
-      "Młyny Rothera to zespół zabytkowych budynków przemysłowych nad Brdą z przełomu XIX i XX wieku. Należały do rodziny Rotherów, prominentnych przemysłowców niemieckich. Młyny były jednym z największych zakładów przemysłowych w przedwojennej Bydgoszczy. Obecnie kompleks jest rewitalizowany i służy celom kulturalnym i gastronomicznym. To przykład udanej adaptacji dziedzictwa industrialnego.",
-    year: "1896",
-    historicalPeriod: "Industrializacja",
+      "Najstarszy budynek w Bydgoszczy, gotycka fara z XV wieku. Wyróżnia się niezwykle kolorowym wnętrzem (polichromie). W ołtarzu głównym znajduje się słynący łaskami obraz Matki Bożej Pięknej Miłości trzymającej różę.",
+    year: "1502",
+    historicalPeriod: "Średniowiecze",
     quiz: [
       {
-        question: "Do kogo należały Młyny?",
-        options: [
-          "Rodziny Rothera",
-          "Rodziny Schichauów",
-          "Rodziny Poznańskich",
-          "Rodziny Scheiblerów",
-        ],
-        correctIndex: 0,
-      },
-      {
-        question: "Z jakiego okresu pochodzą Młyny?",
-        options: [
-          "XVIII wieku",
-          "Przełomu XIX i XX wieku",
-          "Okresu międzywojennego",
-          "Po II wojnie światowej",
-        ],
+        question: "Co trzyma w dłoni Matka Boża na obrazie?",
+        options: ["Miecz", "Różę", "Książkę", "Jabłko"],
         correctIndex: 1,
       },
       {
-        question: "Jakiemu celowi obecnie służą Młyny?",
-        options: [
-          "Nadal produkują mąkę",
-          "Są magazynami",
-          "Celom kulturalnym i gastronomicznym",
-          "Są opuszczone",
-        ],
-        correctIndex: 2,
+        question: "W jakim stylu zbudowano kościół?",
+        options: ["Gotyckim", "Barokowym", "Nowoczesnym", "Romańskim"],
+        correctIndex: 0,
+      },
+      {
+        question: "Czy jest to najstarszy budynek w mieście?",
+        options: ["Nie", "Tak", "Nie wiadomo", "Zbudowano go wczoraj"],
+        correctIndex: 1,
       },
     ],
   },
   {
     id: "7",
-    name: "Kanał Bydgoski",
-    lat: 53.13897240071494,
-    lng: 17.759405533411364,
-    category: "miejsce_pamieci",
-    image: "/images/kanal-bydgoski.jpg",
+    name: "Łuczniczka",
+    // Skwer przed Teatrem Polskim (Park Kochanowskiego)
+    lat: 53.13089064998661,
+    lng: 18.012108802528328,
+
+    category: "rzeźba",
+    image: "/images/luczniczka.jpg",
     description:
-      "Kanał Bydgoski to historyczna droga wodna łącząca Wisłę z Brdą i Notecią, zbudowana w latach 1773-1775. To jedno z największych osiągnięć inżynierii XVIII wieku w Polsce. Kanał miał ogromne znaczenie dla rozwoju handlu i gospodarki regionu. Jego budowa wymagała przełamywania naturalnych barier terenowych. Dziś służy celom rekreacyjnym i turystycznym, będąc popularnym szlakiem kajakowym.",
-    year: "1773-1775",
-    historicalPeriod: "XVIII wiek",
+      "Jeden z najstarszych symboli miasta (1910 r.). Klasyczna rzeźba nagiej kobiety napinającej łuk. Kiedyś budziła skandal obyczajowy, dziś stoi w sercu Dzielnicy Muzycznej. Oryginał znajduje się naprzeciwko Teatru Polskiego.",
+    year: "1910",
+    historicalPeriod: "Zabór pruski",
     quiz: [
       {
-        question: "Kiedy zbudowano Kanał Bydgoski?",
-        options: ["1650-1655", "1773-1775", "1820-1825", "1890-1895"],
+        question: "Co robi postać przedstawiona na rzeźbie?",
+        options: ["Biegnie", "Napina łuk", "Gra na harfie", "Czyta książkę"],
         correctIndex: 1,
       },
       {
-        question: "Co łączy Kanał Bydgoski?",
+        question: "Gdzie stoi oryginał rzeźby?",
         options: [
-          "Wisłę z Odrą",
-          "Wisłę z Wartą",
-          "Wisłę z Brdą i Notecią",
-          "Brdę z Odrą",
+          "Na Rynku",
+          "W Parku Kochanowskiego",
+          "W Warszawie",
+          "W muzeum",
         ],
-        correctIndex: 2,
+        correctIndex: 1,
       },
       {
-        question: "Jakiemu celowi obecnie służy kanał?",
+        question: "Dlaczego rzeźba budziła kiedyś kontrowersje?",
         options: [
-          "Transportowi towarów",
-          "Tylko celom rekreacyjnym i turystycznym",
-          "Zaopatrzeniu w wodę",
-          "Produkcji energii",
+          "Przez nagość postaci",
+          "Przez koszt budowy",
+          "Przez zły materiał",
+          "Przez autora",
+        ],
+        correctIndex: 0,
+      },
+    ],
+  },
+  {
+    id: "8",
+    name: "Fontanna Potop",
+    // Środek niecki fontanny w Parku Kazimierza Wielkiego
+    lat: 53.126267996594294,
+    lng: 18.0059981171024,
+
+    category: "pomnik",
+    image: "/images/potop.jpg",
+    description:
+      "Imponująca, wielofigurowa fontanna przedstawiająca biblijny Potop. Oryginał przetopiono na cele wojenne w 1943 roku. Dzięki ofiarności mieszkańców Bydgoszczy, została wiernie zrekonstruowana i odsłonięta ponownie w 2014 roku.",
+    year: "1904 / 2014",
+    historicalPeriod: "Rekonstrukcja",
+    quiz: [
+      {
+        question: "Jaka scena biblijna jest przedstawiona?",
+        options: [
+          "Wygnanie z raju",
+          "Potop",
+          "Wieża Babel",
+          "Ostatnia Wieczerza",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "Co stało się z oryginałem podczas wojny?",
+        options: [
+          "Został ukradziony",
+          "Przetopiono go na broń",
+          "Zatonął",
+          "Ukryto go",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "Dzięki komu odbudowano fontannę?",
+        options: [
+          "Dzięki Rządowi",
+          "Dzięki zbiórkom mieszkańców",
+          "Dzięki UE",
+          "Dzięki sponsorowi",
         ],
         correctIndex: 1,
       },
     ],
   },
   {
-    id: "8",
-    name: "Katedra pw. św. Marcina i Mikołaja",
-    lat: 53.12368857860565,
-    lng: 18.006901144981384,
-    category: "budynek",
-    image: "/images/katedra.jpg",
+    id: "9",
+    name: "Barka Lemara",
+    // Nabrzeże przy Spichrzach
+    lat: 53.12311,
+    lng: 18.00188,
+    category: "muzeum",
+    image: "/images/barka-lemara.jpg",
     description:
-      "Katedra bydgoska to monumentalny gotycki kościół z XV wieku, jeden z największych w regionie. Jej budowa trwała ponad 200 lat, zakończona w 1502 roku. Świątynia przetrwała liczne zniszczenia wojenne i pożary. We wnętrzu zachowały się cenne zabytki sztuki sakralnej, w tym średniowieczne freski. Wieże katedry dominują nad panoramą Starego Miasta, będąc jednym z głównych punktów orientacyjnych Bydgoszczy.",
-    year: "1466-1502",
-    historicalPeriod: "Średniowiecze",
+      "Żywe muzeum tradycji wodniackich. Zabytkowa barka towarowa z 1937 roku, zacumowana na Brdzie. W środku można zobaczyć, jak żyły rodziny szyprów, którzy spławiali towary rzeką do Gdańska i Berlina.",
+    year: "1937",
+    historicalPeriod: "II RP",
     quiz: [
       {
-        question: "W jakim stylu zbudowano katedrę?",
-        options: ["Romańskim", "Gotyckim", "Barokowym", "Renesansowym"],
+        question: "Czym jest Lemara?",
+        options: [
+          "Statkiem pasażerskim",
+          "Barką towarową",
+          "Okrętem wojennym",
+          "Jachtem",
+        ],
         correctIndex: 1,
       },
       {
-        question: "Ile lat trwała budowa katedry?",
-        options: ["50 lat", "100 lat", "Ponad 200 lat", "500 lat"],
-        correctIndex: 2,
+        question: "Kto mieszkał na takich barkach?",
+        options: ["Rybacy", "Rodziny szyprów", "Żołnierze", "Turyści"],
+        correctIndex: 1,
       },
       {
-        question: "Komu poświęcona jest katedra?",
+        question: "Gdzie zacumowana jest barka?",
         options: [
-          "Św. Piotrowi i Pawłowi",
-          "Św. Marcinowi i Mikołajowi",
-          "Św. Janowi i Jakubowi",
-          "Św. Stanisławowi",
+          "Na Wiśle",
+          "Na Brdzie (przy Spichrzach)",
+          "W porcie morskim",
+          "Na jeziorze",
+        ],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "10",
+    name: "Okno Twardowskiego",
+    // Stary Rynek 15 (okno na piętrze)
+    lat: 53.12207872298885,
+    lng: 18.001176871653946,
+
+    category: "atrakcja",
+    image: "/images/twardowski.jpg",
+    description:
+      "Ruchoma figura legendarnego czarnoksiężnika, która ukazuje się w oknie kamienicy przy Starym Rynku codziennie o 13:13 i 21:13. Towarzyszy temu muzyka, dymy i diabelski śmiech. Legenda głosi, że Twardowski bawił w Bydgoszczy w 1560 roku.",
+    year: "2006",
+    historicalPeriod: "Legenda / Współczesność",
+    quiz: [
+      {
+        question: "O której godzinie pojawia się Twardowski?",
+        options: ["12:00", "13:13", "15:00", "17:00"],
+        correctIndex: 1,
+      },
+      {
+        question: "Gdzie pojawia się figura?",
+        options: ["Na balkonie", "W oknie kamienicy", "Na dachu", "W drzwiach"],
+        correctIndex: 1,
+      },
+      {
+        question: "Kim był Pan Twardowski?",
+        options: ["Królem", "Czarnoksiężnikiem", "Piekarzem", "Rycerzem"],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "11",
+    name: "Wieża Ciśnień",
+    // Punkt na szczycie Wzgórza Dąbrowskiego (wejście)
+    lat: 53.11966490729167,
+    lng: 17.990675163541177,
+
+    category: "budynek",
+    image: "/images/wieza-cisnien.jpg",
+    description:
+      "Neogotycka wieża stojąca na szczycie wzgórza w parku Dąbrowskiego. Kiedyś regulowała ciśnienie wody w mieście, dziś mieści Muzeum Wodociągów i taras widokowy, z którego widać całą panoramę Bydgoszczy.",
+    year: "1900",
+    historicalPeriod: "Przełom XIX/XX wieku",
+    quiz: [
+      {
+        question: "Co znajduje się na szczycie wieży?",
+        options: ["Restauracja", "Taras widokowy", "Zegar", "Basen"],
+        correctIndex: 1,
+      },
+      {
+        question: "Jakie muzeum mieści się w środku?",
+        options: [
+          "Muzeum Zegarów",
+          "Muzeum Wodociągów",
+          "Muzeum Pożarnictwa",
+          "Muzeum Lotnictwa",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "W jakim stylu zbudowano wieżę?",
+        options: ["Barokowym", "Neogotyckim", "Nowoczesnym", "Renesansowym"],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "12",
+    name: "Muzeum Mydła i Historii Brudu",
+    // Ul. Długa 13 (wejście)
+    lat: 53.12148416779133,
+    lng: 17.997551385671745,
+
+    category: "muzeum",
+    image: "/images/muzeum-mydla.jpg",
+    description:
+      "Najbrudniejsze muzeum w Polsce! Znajduje się przy ulicy Długiej. Podczas zwiedzania poznasz historię higieny (lub jej braku) przez wieki i własnoręcznie wykonasz pamiątkowe mydło.",
+    year: "2012",
+    historicalPeriod: "Współczesność",
+    quiz: [
+      {
+        question: "Co wykonują zwiedzający podczas warsztatów?",
+        options: ["Świeczkę", "Mydło", "Szczotkę", "Ręcznik"],
+        correctIndex: 1,
+      },
+      {
+        question: "O czym opowiada muzeum?",
+        options: [
+          "O historii prania",
+          "O historii higieny i brudu",
+          "O produkcji perfum",
+          "O modzie",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "Przy jakiej ulicy się znajduje?",
+        options: ["Krótkiej", "Długiej", "Szerokiej", "Wąskiej"],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "13",
+    name: "Exploseum - Muzeum Okręgowe im. Leona Wyczółkowskiego",
+    // Wejście do Hangaru (Kasa/Start trasy) - ul. Alfreda Nobla
+    lat: 53.070943044397026,
+    lng: 18.074024782019414,
+
+    category: "muzeum",
+    image: "/images/exploseum.jpg",
+    description:
+      "Unikalne na skalę światową muzeum w dawnej, tajnej fabryce materiałów wybuchowych III Rzeszy (DAG Fabrik Bromberg). Kompleks ukryty w lesie, połączony tunelami, opowiada historię Alfreda Nobla, koncernu DAG i robotników przymusowych.",
+    year: "1939-1945",
+    historicalPeriod: "II wojna światowa",
+    quiz: [
+      {
+        question: "Co produkowano tutaj w czasie wojny?",
+        options: ["Czołgi", "Materiały wybuchowe", "Samoloty", "Mundury"],
+        correctIndex: 1,
+      },
+      {
+        question: "Gdzie ukryta jest fabryka?",
+        options: [
+          "W centrum miasta",
+          "W lesie (Puszcza Bydgoska)",
+          "W podziemiach rynku",
+          "Na lotnisku",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "Czyjego imienia historię można tu poznać?",
+        options: [
+          "Alberta Einsteina",
+          "Alfreda Nobla",
+          "Marii Curie",
+          "Thomasa Edisona",
+        ],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "14",
+    name: "Bazylika Rzymskokatolicka pw. św. Wincentego a Paulo",
+    // Dokładnie pod wielką kopułą
+    lat: 53.127144675326846,
+    lng: 18.017310862580423,
+
+    category: "sacrum",
+    image: "/images/bazylika.jpg",
+    description:
+      "Monumentalny kościół z największą kopułą w Bydgoszczy. Wzorowany na rzymskim Panteonie. Jego budowa rozpoczęła się w 1924 roku jako wotum wdzięczności za odzyskanie niepodległości.",
+    year: "1924",
+    historicalPeriod: "Dwudziestolecie międzywojenne",
+    quiz: [
+      {
+        question: "Na jakiej budowli wzorowana jest Bazylika?",
+        options: [
+          "Na Koloseum",
+          "Na rzymskim Panteonie",
+          "Na piramidzie",
+          "Na wieży Eiffla",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "Co jest najbardziej charakterystycznym elementem?",
+        options: [
+          "Wysoka wieża",
+          "Ogromna kopuła",
+          "Szklany dach",
+          "Drewniane drzwi",
+        ],
+        correctIndex: 1,
+      },
+      {
+        question: "W jakim okresie zaczęto budowę?",
+        options: [
+          "W średniowieczu",
+          "W dwudziestoleciu międzywojennym",
+          "W XXI wieku",
+          "W baroku",
+        ],
+        correctIndex: 1,
+      },
+    ],
+  },
+  {
+    id: "15",
+    name: "Budynek Poczty Polskiej",
+    // Narożnik budynku od strony rzeki
+    lat: 53.12383532310098,
+    lng: 18.003972600425232,
+
+    category: "budynek",
+    image: "/images/poczta.jpg",
+    description:
+      "Okazały, neogotycki gmach z czerwonej cegły stojący nad samą Brdą. Zbudowany w stylu pruskim pod koniec XIX wieku. Do dziś pełni funkcję Poczty Głównej. Nad wejściem widnieje charakterystyczny zegar.",
+    year: "1899",
+    historicalPeriod: "Zabór pruski",
+    quiz: [
+      {
+        question: "Z jakiego materiału zbudowano budynek?",
+        options: ["Z piaskowca", "Z czerwonej cegły", "Z betonu", "Ze szkła"],
+        correctIndex: 1,
+      },
+      {
+        question: "Jaką funkcję pełni budynek?",
+        options: ["Muzeum", "Poczty", "Szkoły", "Szpitala"],
+        correctIndex: 1,
+      },
+      {
+        question: "W jakim stylu jest wybudowany?",
+        options: [
+          "Barokowym",
+          "Neogotyckim (pruskim)",
+          "Renesansowym",
+          "Futurystycznym",
         ],
         correctIndex: 1,
       },
