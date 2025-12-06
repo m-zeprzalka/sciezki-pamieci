@@ -111,7 +111,7 @@ export default function Home() {
               <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
             <p className="text-lg text-muted-foreground max-w-2xl mt-4">
-              Trzy proste kroki do odkrywania historii Bydgoszczy
+              Cztery proste kroki do odkrywania historii Bydgoszczy
             </p>
           </div>
 
@@ -127,8 +127,17 @@ export default function Home() {
               >
                 1
               </div>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                <MapPin className="w-7 h-7 text-primary" />
+              <div
+                className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg"
+                style={{
+                  backgroundColor: "hsl(0, 100%, 45%, 0.08)",
+                  border: "1px solid hsl(0, 100%, 45%, 0.15)",
+                }}
+              >
+                <MapPin
+                  className="w-5 h-5"
+                  style={{ color: "hsl(0, 100%, 45%)" }}
+                />
               </div>
               <h3 className="text-xl font-bold">Otwórz Mapę</h3>
               <p className="text-muted-foreground">
@@ -148,8 +157,17 @@ export default function Home() {
               >
                 2
               </div>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Sparkles className="w-7 h-7 text-primary" />
+              <div
+                className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg"
+                style={{
+                  backgroundColor: "hsl(0, 100%, 45%, 0.08)",
+                  border: "1px solid hsl(0, 100%, 45%, 0.15)",
+                }}
+              >
+                <Sparkles
+                  className="w-5 h-5"
+                  style={{ color: "hsl(0, 100%, 45%)" }}
+                />
               </div>
               <h3 className="text-xl font-bold">Odkryj i Przeczytaj</h3>
               <p className="text-muted-foreground">
@@ -169,8 +187,17 @@ export default function Home() {
               >
                 3
               </div>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Trophy className="w-7 h-7 text-primary" />
+              <div
+                className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg"
+                style={{
+                  backgroundColor: "hsl(0, 100%, 45%, 0.08)",
+                  border: "1px solid hsl(0, 100%, 45%, 0.15)",
+                }}
+              >
+                <Trophy
+                  className="w-5 h-5"
+                  style={{ color: "hsl(0, 100%, 45%)" }}
+                />
               </div>
               <h3 className="text-xl font-bold">Quiz & Punkty</h3>
               <p className="text-muted-foreground">
@@ -190,8 +217,17 @@ export default function Home() {
               >
                 4
               </div>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Camera className="w-7 h-7 text-primary" />
+              <div
+                className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg"
+                style={{
+                  backgroundColor: "hsl(0, 100%, 45%, 0.08)",
+                  border: "1px solid hsl(0, 100%, 45%, 0.15)",
+                }}
+              >
+                <Camera
+                  className="w-5 h-5"
+                  style={{ color: "hsl(0, 100%, 45%)" }}
+                />
               </div>
               <h3 className="text-xl font-bold">Stwórz własną galerię</h3>
               <p className="text-muted-foreground">
@@ -219,24 +255,25 @@ export default function Home() {
           },
           {
             value: "∞",
-            label: "Historii do poznania",
+            label: "prosty system dodania nowych miejsc",
             trend: "↗ Rozszerzalne o nowe miejsca",
           },
         ]}
       />
 
       {/* Tech Stack */}
-      <section className="section-spacing border-y border-border bg-muted/20">
-        <div className="container-consistent">
-          <div className="text-center mb-16">
+      <section className="section-spacing border-t border-border">
+        <div className="container-section">
+          {/* Section Header */}
+          <div className="mb-16">
             <div className="inline-block">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-                Nowoczesny Stack
+                Nowoczesny stos technologiczny
               </h2>
-              <div className="h-1 w-16 bg-primary rounded-full mx-auto" />
+              <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Zbudowane na najnowszych technologiach web
+            <p className="text-lg text-muted-foreground max-w-2xl mt-4">
+              Tanie w utrzymaniu niezawodne rozwiązanie
             </p>
           </div>
 
@@ -271,7 +308,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
                 <Star className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
-                  Gamification Done Right
+                  Nowy wymiar zwiedzania
                 </span>
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
@@ -289,7 +326,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">Social ranking</span>
+                  <span className="text-sm font-medium">Social Ranking</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-5 h-5 text-primary" />
@@ -328,7 +365,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                8 miejsc, 24 pytania, nieskończone możliwości. Każdy pomnik ma
+                8 miejsc, 24 pytania, nieskończone możliwości. Każde miejsce ma
                 swoją historię - odkryj je wszystkie!
               </p>
             </div>
@@ -338,16 +375,6 @@ export default function Home() {
                 <Button size="lg" className="text-lg px-10 h-16 shadow-xl">
                   <Map className="w-6 h-6 mr-3" />
                   Otwórz mapę teraz
-                </Button>
-              </Link>
-              <Link href="/explore">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 h-16"
-                >
-                  <Trophy className="w-6 h-6 mr-3" />
-                  Zobacz ranking
                 </Button>
               </Link>
             </div>

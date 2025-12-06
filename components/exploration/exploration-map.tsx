@@ -48,13 +48,21 @@ export function ExplorationMap() {
     const MAX_DISTANCE_KM = 50 // 50km radius from Bydgoszcz
 
     // Helper function to calculate distance between two points (Haversine formula)
-    const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+    const calculateDistance = (
+      lat1: number,
+      lng1: number,
+      lat2: number,
+      lng2: number
+    ): number => {
       const R = 6371 // Earth's radius in km
-      const dLat = (lat2 - lat1) * Math.PI / 180
-      const dLng = (lng2 - lng1) * Math.PI / 180
-      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLng / 2) * Math.sin(dLng / 2)
+      const dLat = ((lat2 - lat1) * Math.PI) / 180
+      const dLng = ((lng2 - lng1) * Math.PI) / 180
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos((lat1 * Math.PI) / 180) *
+          Math.cos((lat2 * Math.PI) / 180) *
+          Math.sin(dLng / 2) *
+          Math.sin(dLng / 2)
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
       return R * c
     }
@@ -78,10 +86,16 @@ export function ExplorationMap() {
           setLocationError(null)
         } else {
           // User is too far from Bydgoszcz - force Bydgoszcz center
-          console.log(`User is ${distanceFromBydgoszcz.toFixed(1)}km from Bydgoszcz - using center`)
+          console.log(
+            `User is ${distanceFromBydgoszcz.toFixed(
+              1
+            )}km from Bydgoszcz - using center`
+          )
           setUserLocation(BYDGOSZCZ_CENTER)
           setLocationError(
-            `Jesteś za daleko od Bydgoszczy (${distanceFromBydgoszcz.toFixed(0)}km). Pokazujemy centrum miasta.`
+            `Jesteś za daleko od Bydgoszczy (${distanceFromBydgoszcz.toFixed(
+              0
+            )}km). Pokazujemy centrum miasta.`
           )
         }
 
@@ -103,7 +117,9 @@ export function ExplorationMap() {
             } else {
               setUserLocation(BYDGOSZCZ_CENTER)
               setLocationError(
-                `Jesteś za daleko od Bydgoszczy (${distance.toFixed(0)}km). Pokazujemy centrum miasta.`
+                `Jesteś za daleko od Bydgoszczy (${distance.toFixed(
+                  0
+                )}km). Pokazujemy centrum miasta.`
               )
             }
           },
@@ -125,7 +141,7 @@ export function ExplorationMap() {
         if (error.code === 1) {
           // PERMISSION_DENIED
           setLocationError(
-            "Lokalizacja odrzucona. Pokazujemy centrum Bydgoszczy. Możesz przyznać uprawnienia w ustawieniach przeglądarki."
+            "Lokalizacja odrzucona. Pokazujemy centrum Bydgoszczy."
           )
         } else if (error.code === 2) {
           // POSITION_UNAVAILABLE
@@ -231,7 +247,7 @@ export function ExplorationMap() {
     <>
       {/* Show error message as banner if location was denied */}
       {locationError && (
-        <div className="fixed top-[88px] left-0 right-0 z-40 bg-yellow-500/90 text-yellow-950 px-4 py-3 text-center text-sm font-medium">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white text-yellow-950 px-4 py-3 text-center text-sm font-medium">
           {locationError}
         </div>
       )}

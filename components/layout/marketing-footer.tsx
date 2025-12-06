@@ -9,13 +9,13 @@ export function MarketingFooter() {
       <div className="container-consistent">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>
-            Built for{" "}
+            Stworzone na{" "}
             <span className="font-semibold text-foreground">
-              {CONTENT.project.hackathon}
+              HackNation 2025
             </span>{" "}
-            by Team{" "}
+            Przez{" "}
             <span className="font-semibold text-foreground">
-              {CONTENT.project.team}
+              Michał Zeprzałka
             </span>
           </p>
 

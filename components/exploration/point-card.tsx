@@ -255,7 +255,7 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4"
+        className="fixed top-0 inset-0 z-50 bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4"
         onClick={onClose}
       >
         <motion.div
@@ -263,7 +263,7 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="w-full sm:max-w-2xl max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl"
+          className="w-full sm:max-w-2xl max-h-[90vh]  overflow-hidden shadow-2xl"
           style={{
             backgroundColor: "hsl(var(--background))",
           }}
@@ -324,7 +324,7 @@ export function PointCard({ point, status, onClose }: PointCardProps) {
                   )}
 
                   {/* Photo Upload Button - Always visible */}
-                  <div className="absolute bottom-4 right-4">
+                  <div className="absolute bottom-4 margin-auto">
                     <Button
                       onClick={triggerPhotoUpload}
                       disabled={isUploadingPhoto}
