@@ -11,8 +11,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "1",
     name: "Pomnik Walki i Męczeństwa",
-    lat: 53.1235,
-    lng: 18.0084,
+    lat: 53.12347894512817,
+    lng: 18.00847280025482,
     category: "pomnik",
     image: "/images/pomnik-walki.jpg",
     description:
@@ -50,8 +50,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "2",
     name: "Przechodzący przez Rzekę",
-    lat: 53.1211,
-    lng: 18.0033,
+    lat: 53.12154746055603,
+    lng: 18.003195524215698,
     category: "rzeźba",
     image: "/images/przechodzacy.jpg",
     description:
@@ -94,8 +94,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "3",
     name: "Opera Nova",
-    lat: 53.1197,
-    lng: 18.0014,
+    lat: 53.11975419521332,
+    lng: 18.00142288208008,
     category: "budynek",
     image: "/images/opera-nova.jpg",
     description:
@@ -128,8 +128,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "4",
     name: "Most Uniwersytecki",
-    lat: 53.1221,
-    lng: 18.0052,
+    lat: 53.12294459342957,
+    lng: 18.005725145339966,
     category: "budynek",
     image: "/images/most-uniwersytecki.jpg",
     description:
@@ -167,8 +167,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "5",
     name: "Europejskie Centrum Pieniądza",
-    lat: 53.1228,
-    lng: 18.0097,
+    lat: 53.12345528602600,
+    lng: 18.00895214080811,
     category: "budynek",
     image: "/images/centrum-pieniadza.jpg",
     description:
@@ -211,8 +211,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "6",
     name: "Młyny Rothera",
-    lat: 53.1203,
-    lng: 18.0025,
+    lat: 53.12302,
+    lng: 17.995313,
     category: "budynek",
     image: "/images/mlyny-rothera.jpg",
     description:
@@ -255,8 +255,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "7",
     name: "Kanał Bydgoski",
-    lat: 53.1192,
-    lng: 17.9987,
+    lat: 53.13897240071494,
+    lng: 17.759405533411364,
     category: "miejsce_pamieci",
     image: "/images/kanal-bydgoski.jpg",
     description:
@@ -294,8 +294,8 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "8",
     name: "Katedra pw. św. Marcina i Mikołaja",
-    lat: 53.1244,
-    lng: 18.0078,
+    lat: 53.12368857860565,
+    lng: 18.006901144981384,
     category: "budynek",
     image: "/images/katedra.jpg",
     description:

@@ -28,7 +28,7 @@ export default function Home() {
       {/* Hero Section */}
       <Hero
         title="Bydgoszcz – Ścieżki Pamięci 2.0"
-        subtitle="Odktyj Bydgoszcz - Gamifikowana turystyka w Twojej kieszeni"
+        subtitle="Odkryj Bydgoszcz - Gamifikowana turystyka w Twojej kieszeni"
         description="Odkrywaj historie ukryte w pomnikach, rzeźbach i miejscach pamięci. Graj, ucz się i zbieraj punkty eksplorując Bydgoszcz jak nigdy dotąd."
         ctaPrimary="Rozpocznij eksplorację"
         ctaSecondary="Zobacz jak to działa"
