@@ -1,26 +1,355 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* ===== RADIUS ===== */
+  --radius: 0.5rem;
+
+  /* ===== LIGHT MODE - Minimalist Gov Theme (Black/White + Polish Red) ===== */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+
+  /* Primary: Polish Red #E10002 - SOLID RED */
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 98%;
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 0 0% 97%;
+  --muted-foreground: 0 0% 40%;
+
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 92%;
+  --input: 0 0% 92%;
+  --ring: 0 100% 45%;
+
+  --chart-1: 0 0% 20%;
+  --chart-2: 0 0% 40%;
+  --chart-3: 0 0% 60%;
+  --chart-4: 0 0% 80%;
+  --chart-5: 0 99% 44%;
+
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 0 0% 5%;
+  --sidebar-primary: 0 99% 44%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 97%;
+  --sidebar-accent-foreground: 0 0% 5%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: 0 99% 44%;
+}
+
+.dark {
+  /* ===== DARK MODE - Minimalist Gov Theme ===== */
+  --background: 0 0% 5%;
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 98%;
+
+  /* Primary: Polish Red (brighter for dark mode) */
+  --primary: 0 99% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+
+  --accent: 0 0% 18%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 99% 55%;
+
+  --chart-1: 0 0% 80%;
+  --chart-2: 0 0% 60%;
+  --chart-3: 0 0% 40%;
+  --chart-4: 0 0% 30%;
+  --chart-5: 0 99% 55%;
+
+  --sidebar: 0 0% 8%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 0 99% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 12%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 0 0% 20%;
+  --sidebar-ring: 0 99% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* ========================================
+     CUSTOM TYPOGRAPHY STYLES
+     ======================================== */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  /* ========================================
+     GRADIENT TEXT UTILITY
+     ======================================== */
+  .gradient-text {
+    @apply bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent;
+  }
+
+  /* ========================================
+     GLASSMORPHISM EFFECT
+     ======================================== */
+  .glass {
+    @apply backdrop-blur-md bg-background/80 border border-border/50 shadow-lg;
+  }
+
+  /* ========================================
+     SMOOTH SCROLLING
+     ======================================== */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ========================================
+     RESPONSIVE TYPOGRAPHY UTILITIES
+     ======================================== */
+  .text-display {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+  }
+
+  .text-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  .text-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight;
+  }
+
+  .text-subtitle {
+    @apply text-xl sm:text-2xl md:text-3xl font-medium;
+  }
+
+  .text-body-lg {
+    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+  }
+
+  /* ========================================
+     RESPONSIVE SECTION UTILITIES
+     ======================================== */
+  .section-spacing {
+    @apply py-16 sm:py-20 md:py-24 lg:py-28;
+  }
+
+  .container-section {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Consistent container for all sections */
+  .container-consistent {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  /* ========================================
+     CARD HOVER EFFECT
+     ======================================== */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-foreground/10;
+  }
+
+  .card-glow {
+    @apply shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300;
+  }
+
+  /* ========================================
+     FOCUS RING ENHANCEMENT
+     ======================================== */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* ========================================
+     SELECTION STYLING
+     ======================================== */
+  ::selection {
+    @apply bg-primary/15 text-foreground;
+  }
+
+  /* ========================================
+     PREMIUM ANIMATIONS
+     ======================================== */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(225, 0, 2, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 1000px 100%;
+  }
+
+  /* ========================================
+     CUSTOM SCROLLBAR
+     ======================================== */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary)),
+      hsl(var(--primary) / 0.7)
+    );
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--muted));
+  }
+
+  .dark * {
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--muted));
+  }
+
+  /* ========================================
+     MINIMAL CARD SHADOW
+     ======================================== */
+  .card-minimal {
+    @apply bg-card border border-border shadow-sm rounded-lg;
+  }
+
+  /* ========================================
+     HOVER EFFECT - SUBTLE BUT PRESENT
+     ======================================== */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .hover-glow-primary {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/8 hover:border-primary/20;
+  }
+
+  /* ========================================
+     GLASS EFFECT - SUBTLE
+     ======================================== */
+  .glass-subtle {
+    @apply backdrop-blur-md bg-background/90 border border-border/50;
+  }
+
+  /* ========================================
+     PREMIUM POLISH
+     ======================================== */
+  .premium-shadow {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.02), 0 4px 8px 0 rgb(0 0 0 / 0.03);
+  }
+
+  .premium-shadow-hover {
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.03), 0 8px 24px 0 rgb(0 0 0 / 0.04);
+  }
 }
