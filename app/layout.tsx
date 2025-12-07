@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Hackathon Starter Kit",
-  description:
-    "Minimalistyczny boilerplate do hackatonów z Landing Page jako prezentacja",
+  title: "Interaktywna Gra Miejska - Bydgoszcz Ścieżki Pamięci 2.0",
+  description: "Odgryj bydgoszcz na nowo!",
 }
 
 export default function RootLayout({

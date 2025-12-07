@@ -27,7 +27,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <Hero
-        title="Bydgoszcz – Ścieżki Pamięci 2.0"
+        title="Interaktywna Gra Miejska – Bydgoszcz Ścieżki Pamięci 2.0"
         subtitle="Zagraj w naszą miejską grę edukacyjną i odkryj historię Bydgoszczy na nowo!"
         description="Zrób zdjęcia wszystkich ważnych miesjc w Bydgoszczy, odpowiadaj na pytania i zdobywaj punkty w rankingu eksplorerów. Poznaj sekrety miasta poprzez interaktywną mapę i quizy."
         ctaPrimary="Rozpocznij eksplorację"
@@ -38,15 +38,15 @@ export default function Home() {
       <ProblemCards
         problems={[
           {
-            title: "Zachęcenie do Przyjazdu",
+            title: "Niska popularność Miasta",
             description:
               "W Bydgoszczy zakochałem się od pierwszego wejrzania, ale gdyby nie HackNation 2025 nigdy bym tu nie przyjechał. Musimy jakoś zachęcić turystów, aby przybyli tu pierwszy raz, na pewno będą chcieli wrócić",
             icon: Target,
           },
           {
-            title: "Bark Motywacji",
+            title: "Brak Motywacji",
             description:
-              "Tradycyjne zwiedzanie to przewodnik i tablice informacyjne. Młode pokolenie potrzebuje czegoś więcej - interakcji, zaangażowania, gamifikacji.Ludzie nie mają powodu by aktywnie poznawać miasto. Brakuje elementu rywalizacji, nagród i społecznościowego aspektu odkrywania.",
+              "Tradycyjne zwiedzanie to przewodnik i tablice informacyjne. Młode pokolenie potrzebuje czegoś więcej - interakcji, zaangażowania, gamifikacji. Ludzie nie mają powodu by aktywnie poznawać miasto. Brakuje elementu rywalizacji, nagród i społecznościowego aspektu odkrywania.",
             icon: Brain,
           },
           {
@@ -142,7 +142,8 @@ export default function Home() {
               <h3 className="text-xl font-bold">Otwórz Mapę</h3>
               <p className="text-muted-foreground">
                 Uruchom aplikację i zobacz interaktywną mapę Bydgoszczy z 15
-                punktami historycznymi. Czerwone markery czekają na odkrycie!
+                punktami historycznymi w wersji demo. Czerwone markery czekają
+                na odkrycie!
               </p>
             </div>
 
@@ -304,7 +305,7 @@ export default function Home() {
       {/* Social Proof / Features Highlight */}
       <section className="py-24 bg-muted/30 border-t">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
                 <Star className="w-4 h-4 text-primary" />
@@ -349,6 +350,142 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Features Highlight */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
+                  Wybierz miejsce zwiedzania
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Interaktywna mapa z punktami
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Możliwość interakcji z punktami na mapie poprzez klikanie
+                markerów. Każdy marker reprezentuje miejsce, które warto
+                odwiedzić
+              </p>
+            </div>
+
+            <div>
+              <img src="/mm.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Features Highlight */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
+                  Interaktywna karta
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Zobacz kartę i zrób zdjęcie
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Zrób zdjęcie miejsca, przeczytaj opis i przygotuj się do Quizu
+              </p>
+            </div>
+
+            <div>
+              <img src="/mm2.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Features Highlight */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
+                  Poznaj Historię
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Rozwiąż quiz i zdobywaj punkty
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Interaktywny Quiz z trzema pytaniami o danym miejscu. Zdobywaj
+                punkty i wiedzę na temat historii Bydgoszczy!
+              </p>
+            </div>
+
+            <div>
+              <img src="/mm3.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Social Proof / Features Highlight */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
+                  Weź udział w rywalizacji
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Zdobywaj punkty i wspinaj się w rankingu!
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Dzięki odpowiedzi na pytania możesz zdobywać punkty w rankingu
+                eksploratorów. Sprawdź swoją pozycję i rywalizuj z innymi
+                uczestnikami!
+              </p>
+            </div>
+
+            <div>
+              <img src="/mm4.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Features Highlight */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">
+                  Stwórz Galerię
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                Rób i udostępniaj zdjęcia z wycieczki!
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Możesz tworzyć własne karty zabytków. Rób zdjęcia podczas
+                zwiedzania i na koniec stwórz mozaikę zdjęć do udostępnienia w
+                Social Mediach!
+              </p>
+            </div>
+
+            <div>
+              <img src="/mm5.jpg" alt="" />
             </div>
           </div>
         </div>
