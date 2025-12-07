@@ -55,7 +55,7 @@ export const historicalPoints: HistoricalPoint[] = [
     category: "rzeźba",
     image: "/images/przechodzacy.jpg",
     description:
-      "Ikona Bydgoszczy. Rzeźba linoskoczka balansującego na linie nad rzeką Brdą. Została odsłonięta 1 maja 2004 roku, w dniu wejścia Polski do Unii Europejskiej. Środek ciężkości figury jest położony poniżej liny, dzięki czemu rzeźba utrzymuje równowagę w każdych warunkach pogodowych.",
+      "Współczesna ikona miasta autorstwa Jerzego Kędziory. Rzeźba 'balansująca' przedstawia linoskoczka z tyczką, zawieszonego nad Brdą. Odsłonięta 1 maja 2004 r. upamiętnia wejście Polski do Unii Europejskiej. Fenomen rzeźby polega na przesunięciu środka ciężkości poniżej liny (w okolice stóp postaci), co zapewnia jej stabilność nawet przy silnym wietrze.",
     year: "2004",
     historicalPeriod: "Współczesność",
     quiz: [
@@ -92,11 +92,10 @@ export const historicalPoints: HistoricalPoint[] = [
     // Główne wejście do Muzeum przy ul. Grodzkiej 7-11
     lat: 53.12293301377799,
     lng: 18.00158783973981,
-
     category: "budynek",
     image: "/images/spichrze.jpg",
     description:
-      "Najbardziej rozpoznawalny symbol miasta, widoczny w logo Bydgoszczy. Z dawnego zespołu pięciu szachulcowych spichlerzy zbożowych, do dziś przetrwały trzy. Powstały na przełomie XVIII i XIX wieku. Obecnie są siedzibą Muzeum Okręgowego.",
+      "Najważniejszy symbol handlowej historii Bydgoszczy, widniejący w logo miasta. Z pierwotnego kompleksu pięciu spichlerzy o konstrukcji szachulcowej (tzw. mur pruski), do dziś zachowały się trzy (dwa spłonęły w 1960 r.). Zbudowane w latach 1793–1800, służyły do magazynowania zboża spławianego do Gdańska. Obecnie siedziba Muzeum Okręgowego.",
     year: "1793-1800",
     historicalPeriod: "Prusy Południowe",
     quiz: [
@@ -121,13 +120,13 @@ export const historicalPoints: HistoricalPoint[] = [
   {
     id: "3",
     name: "Młyny Rothera",
-    // TWOJE WSPÓŁRZĘDNE (Taras/Woda)
+    // Taras/Woda
     lat: 53.122945,
     lng: 17.994954,
     category: "budynek",
     image: "/images/mlyny-rothera.jpg",
     description:
-      "Potężny kompleks przemysłowy na Wyspie Młyńskiej z połowy XIX wieku. Składa się z młyna i dwóch spichlerzy. Po spektakularnej rewitalizacji zakończonej w 2021 roku, stał się nowoczesnym centrum nauki i kultury z tarasami widokowymi.",
+      "Monumentalny zespół przemysłowy z połowy XIX wieku, należący pierwotnie do Państwa Pruskiego (tzw. Młyny Królewskie). W skład kompleksu wchodzą: młyn główny oraz spichlerze mączny i zbożowy. Po rewitalizacji nagrodzonej licznymi nagrodami architektonicznymi, obiekt stał się nowoczesnym Parkiem Kultury, miejscem wystaw i spotkań.",
     year: "1849",
     historicalPeriod: "XIX wiek",
     quiz: [
@@ -167,7 +166,7 @@ export const historicalPoints: HistoricalPoint[] = [
     category: "budynek",
     image: "/images/opera-nova.jpg",
     description:
-      "Jeden z najnowocześniejszych teatrów muzycznych w Polsce, malowniczo położony w zakolu Brdy. Jego budowa trwała ponad 30 lat, zyskując przydomek 'białego wieloryba'. Dziś jest gospodarzem Bydgoskiego Festiwalu Operowego.",
+      "Gmach w kształcie trzech kręgów, malowniczo położony w zakolu Brdy. Jego budowa trwała ponad 30 lat (od 1973 do 2006), przez co bydgoszczanie nazywali go 'Białym Wielorybem'. Jest to jeden z najlepiej wyposażonych teatrów muzycznych w Polsce i organizator Bydgoskiego Festiwalu Operowego.",
     year: "2006",
     historicalPeriod: "XXI wiek",
     quiz: [
@@ -200,15 +199,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "5",
-    name: "Pomnik Walki i Męczeństwa",
+    name: "Pomnik Walki i Męczeństwa Ziemi Bydgoskiej",
     // Płyta Starego Rynku, przed pomnikiem
     lat: 53.122151511497606,
     lng: 17.99991417461088,
-
     category: "pomnik",
     image: "/images/pomnik-walki.jpg",
     description:
-      "Monumentalny pomnik na Starym Rynku upamiętniający ofiary II wojny światowej. Stoi w miejscu publicznych egzekucji dokonanych przez nazistów na mieszkańcach Bydgoszczy we wrześniu 1939 roku (tzw. Krwawa Niedziela).",
+      "Monumentalna rzeźba prof. Franciszka Masiaka, ustawiona na Starym Rynku w 1969 roku. Upamiętnia ofiary nazistowskiego terroru, w tym publicznych egzekucji dokonanych w tym miejscu we wrześniu 1939 roku (tzw. Krwawa Niedziela). Pomnik przedstawia grupę osób w momencie egzekucji, symbolizując męczeństwo i opór.",
     year: "1969",
     historicalPeriod: "PRL / Pamięć II WŚ",
     quiz: [
@@ -241,15 +239,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "6",
-    name: "Katedra Bydgoska",
+    name: "Katedra św. Marcina i Mikołaja (Fara)",
     // Wejście główne od ul. Farnej
     lat: 53.12289483180527,
     lng: 17.999125858213457,
-
     category: "sacrum",
     image: "/images/katedra.jpg",
     description:
-      "Najstarszy budynek w Bydgoszczy, gotycka fara z XV wieku. Wyróżnia się niezwykle kolorowym wnętrzem (polichromie). W ołtarzu głównym znajduje się słynący łaskami obraz Matki Bożej Pięknej Miłości trzymającej różę.",
+      "Najstarszy i najcenniejszy zabytek Bydgoszczy, przykład gotyku nadwiślańskiego (XV wiek). Wnętrze zachwyca modernistycznymi polichromiami z lat 20. XX wieku. W ołtarzu głównym czczony jest gotycki obraz Matki Bożej Pięknej Miłości (Matki Bożej z Różą), uważany za najpiękniejszy wizerunek maryjny w Polsce.",
     year: "1502",
     historicalPeriod: "Średniowiecze",
     quiz: [
@@ -276,11 +273,10 @@ export const historicalPoints: HistoricalPoint[] = [
     // Skwer przed Teatrem Polskim (Park Kochanowskiego)
     lat: 53.13089064998661,
     lng: 18.012108802528328,
-
     category: "rzeźba",
     image: "/images/luczniczka.jpg",
     description:
-      "Jeden z najstarszych symboli miasta (1910 r.). Klasyczna rzeźba nagiej kobiety napinającej łuk. Kiedyś budziła skandal obyczajowy, dziś stoi w sercu Dzielnicy Muzycznej. Oryginał znajduje się naprzeciwko Teatru Polskiego.",
+      "Dzieło berlińskiego rzeźbiarza Ferdinanda Lepcke z 1910 roku, uważane za jeden z symboli Bydgoszczy. Przedstawia nagą kobietę o klasycznych proporcjach, napinającą łuk. Początkowo budziła kontrowersje obyczajowe. Obecnie oryginał zdobi skwer przed Teatrem Polskim, a kopie znajdują się w kilku miastach Niemiec.",
     year: "1910",
     historicalPeriod: "Zabór pruski",
     quiz: [
@@ -317,11 +313,10 @@ export const historicalPoints: HistoricalPoint[] = [
     // Środek niecki fontanny w Parku Kazimierza Wielkiego
     lat: 53.126267996594294,
     lng: 18.0059981171024,
-
     category: "pomnik",
     image: "/images/potop.jpg",
     description:
-      "Imponująca, wielofigurowa fontanna przedstawiająca biblijny Potop. Oryginał przetopiono na cele wojenne w 1943 roku. Dzięki ofiarności mieszkańców Bydgoszczy, została wiernie zrekonstruowana i odsłonięta ponownie w 2014 roku.",
+      "Zrekonstruowane arcydzieło Ferdinanda Lepcke. Monumentalna fontanna przedstawia biblijny Potop – ludzi i zwierzęta walczące o przetrwanie. Oryginał z 1904 roku został przetopiony na cele wojenne w 1943 roku (tzw. akcja 'Givt spende'). Dzięki społecznej zbiórce mieszkańców, fontannę wiernie odtworzono i odsłonięto w 2014 roku.",
     year: "1904 / 2014",
     historicalPeriod: "Rekonstrukcja",
     quiz: [
@@ -366,7 +361,7 @@ export const historicalPoints: HistoricalPoint[] = [
     category: "muzeum",
     image: "/images/barka-lemara.jpg",
     description:
-      "Żywe muzeum tradycji wodniackich. Zabytkowa barka towarowa z 1937 roku, zacumowana na Brdzie. W środku można zobaczyć, jak żyły rodziny szyprów, którzy spławiali towary rzeką do Gdańska i Berlina.",
+      "Zabytkowa barka towarowa typu 'Gross Finow' z 1937 roku. Jest żywym świadectwem szyperskiej tradycji Bydgoszczy – miasta nierozerwalnie związanego z wodą. Wnętrza ukazują trudne warunki życia i pracy rodzin szyperskich, które spławiały towary Brdą i Wisłą.",
     year: "1937",
     historicalPeriod: "II RP",
     quiz: [
@@ -399,15 +394,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "10",
-    name: "Okno Twardowskiego",
+    name: "Pan Twardowski (Kamienica)",
     // Stary Rynek 15 (okno na piętrze)
     lat: 53.12207872298885,
     lng: 18.001176871653946,
-
     category: "atrakcja",
     image: "/images/twardowski.jpg",
     description:
-      "Ruchoma figura legendarnego czarnoksiężnika, która ukazuje się w oknie kamienicy przy Starym Rynku codziennie o 13:13 i 21:13. Towarzyszy temu muzyka, dymy i diabelski śmiech. Legenda głosi, że Twardowski bawił w Bydgoszczy w 1560 roku.",
+      "Instalacja artystyczna Jerzego Kędziory. Mechaniczna figura legendarnego mistrza czarnej magii ukazuje się w oknie kamienicy nr 15 o godz. 13:13 i 21:13. Spektaklowi towarzyszy muzyka, dym i diabelski śmiech. Nawiązuje to do wizyty Twardowskiego w Bydgoszczy w 1560 roku, kiedy to miał odmłodzić burmistrza.",
     year: "2006",
     historicalPeriod: "Legenda / Współczesność",
     quiz: [
@@ -434,11 +428,10 @@ export const historicalPoints: HistoricalPoint[] = [
     // Punkt na szczycie Wzgórza Dąbrowskiego (wejście)
     lat: 53.11966490729167,
     lng: 17.990675163541177,
-
     category: "budynek",
     image: "/images/wieza-cisnien.jpg",
     description:
-      "Neogotycka wieża stojąca na szczycie wzgórza w parku Dąbrowskiego. Kiedyś regulowała ciśnienie wody w mieście, dziś mieści Muzeum Wodociągów i taras widokowy, z którego widać całą panoramę Bydgoszczy.",
+      "Malownicza, neogotycka budowla z 1900 roku, zlokalizowana w Parku Henryka Dąbrowskiego. Przez dziesięciolecia regulowała ciśnienie w miejskiej sieci wodociągowej. Obecnie mieści unikalne Muzeum Wodociągów, a z tarasu na jej szczycie rozpościera się jedna z najlepszych panoram Bydgoszczy.",
     year: "1900",
     historicalPeriod: "Przełom XIX/XX wieku",
     quiz: [
@@ -470,11 +463,10 @@ export const historicalPoints: HistoricalPoint[] = [
     // Ul. Długa 13 (wejście)
     lat: 53.12148416779133,
     lng: 17.997551385671745,
-
     category: "muzeum",
     image: "/images/muzeum-mydla.jpg",
     description:
-      "Najbrudniejsze muzeum w Polsce! Znajduje się przy ulicy Długiej. Podczas zwiedzania poznasz historię higieny (lub jej braku) przez wieki i własnoręcznie wykonasz pamiątkowe mydło.",
+      "Unikatowa placówka na skalę europejską, uhonorowana tytułem Najlepszego Produktu Turystycznego 2017. Muzeum opowiada fascynującą historię higieny człowieka – od starożytnych łaźni po PRL-owską pralkę 'Frania'. Integralną częścią zwiedzania są warsztaty, podczas których goście własnoręcznie tworzą mydło.",
     year: "2012",
     historicalPeriod: "Współczesność",
     quiz: [
@@ -502,15 +494,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "13",
-    name: "Exploseum - Muzeum Okręgowe im. Leona Wyczółkowskiego",
+    name: "Exploseum (DAG Fabrik)",
     // Wejście do Hangaru (Kasa/Start trasy) - ul. Alfreda Nobla
     lat: 53.070943044397026,
     lng: 18.074024782019414,
-
     category: "muzeum",
     image: "/images/exploseum.jpg",
     description:
-      "Unikalne na skalę światową muzeum w dawnej, tajnej fabryce materiałów wybuchowych III Rzeszy (DAG Fabrik Bromberg). Kompleks ukryty w lesie, połączony tunelami, opowiada historię Alfreda Nobla, koncernu DAG i robotników przymusowych.",
+      "Ewenement na skalę światową – muzeum techniki wojennej urządzone w budynkach dawnej DAG Fabrik Bromberg. Była to jedna z największych, ściśle tajnych fabryk materiałów wybuchowych III Rzeszy. Betonowe budynki ukryte w lesie połączone są systemem tuneli. Ekspozycja porusza trudne tematy pracy przymusowej, historii koncernu DAG i Alfreda Nobla.",
     year: "1939-1945",
     historicalPeriod: "II wojna światowa",
     quiz: [
@@ -543,15 +534,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "14",
-    name: "Bazylika Rzymskokatolicka pw. św. Wincentego a Paulo",
+    name: "Bazylika św. Wincentego a Paulo",
     // Dokładnie pod wielką kopułą
     lat: 53.127144675326846,
     lng: 18.017310862580423,
-
     category: "sacrum",
     image: "/images/bazylika.jpg",
     description:
-      "Monumentalny kościół z największą kopułą w Bydgoszczy. Wzorowany na rzymskim Panteonie. Jego budowa rozpoczęła się w 1924 roku jako wotum wdzięczności za odzyskanie niepodległości.",
+      "Monumentalna świątynia zaprojektowana przez Adama Ballenstedta, wzorowana na rzymskim Panteonie. Zbudowana jako wotum dziękczynne za powrót Pomorza do Polski. Posiada jedną z największych kopuł żelbetowych w Polsce (średnica 40 metrów).",
     year: "1924",
     historicalPeriod: "Dwudziestolecie międzywojenne",
     quiz: [
@@ -589,15 +579,14 @@ export const historicalPoints: HistoricalPoint[] = [
   },
   {
     id: "15",
-    name: "Budynek Poczty Polskiej",
+    name: "Poczta Polska (Dawna Dyrekcja)",
     // Narożnik budynku od strony rzeki
     lat: 53.12383532310098,
     lng: 18.003972600425232,
-
     category: "budynek",
     image: "/images/poczta.jpg",
     description:
-      "Okazały, neogotycki gmach z czerwonej cegły stojący nad samą Brdą. Zbudowany w stylu pruskim pod koniec XIX wieku. Do dziś pełni funkcję Poczty Głównej. Nad wejściem widnieje charakterystyczny zegar.",
+      "Okazały gmach w stylu neogotyckim, wzniesiony dla Cesarskiej Dyrekcji Poczty. Budynek zachował swoją pierwotną funkcję do dziś. Charakterystyczne są: czerwona cegła, masywna bryła i detale architektoniczne (w tym zegar nad wejściem) nawiązujące do tzw. stylu rundbogenstil (stylu łuków kolistych).",
     year: "1899",
     historicalPeriod: "Zabór pruski",
     quiz: [

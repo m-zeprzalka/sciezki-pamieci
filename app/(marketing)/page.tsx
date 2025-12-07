@@ -338,18 +338,7 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="text-6xl">🗺️</div>
-                  <div className="space-y-2">
-                    <p className="text-5xl font-bold text-primary">15</p>
-                    <p className="text-sm text-muted-foreground px-8">
-                      Miejsc historycznych z pełnym opisem i quizami
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+              <img src="/i16p.png" alt="" />
             </div>
           </div>
         </div>
