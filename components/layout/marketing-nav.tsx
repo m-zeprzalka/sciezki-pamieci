@@ -21,7 +21,7 @@ export function MarketingNav() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          <Button asChild className="group w-full sm:w-auto">
+          <Button asChild className="group sm:w-auto">
             <Link href="/explore">
               Rozpocznij
               <ArrowRight className="transition-transform group-hover:translate-x-1" />
@@ -31,7 +31,7 @@ export function MarketingNav() {
 
           <Button asChild variant="outline" size="sm">
             <a
-              href="https://github.com"
+              href="https://github.com/m-zeprzalka/sciezki-pamieci"
               target="_blank"
               rel="noopener noreferrer"
             >

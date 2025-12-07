@@ -35,7 +35,7 @@ export function AppHeader({ title }: AppHeaderProps) {
     <header className="sticky top-0 z-10 h-14 sm:h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex items-center justify-between h-full px-4 sm:px-6">
         {/* Left: Mobile Menu + Title */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
@@ -128,7 +128,7 @@ export function AppHeader({ title }: AppHeaderProps) {
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-4">
           <div className="hidden sm:block">
             <ThemeToggle />
           </div>
